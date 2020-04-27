@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {StyleSheet, View, Text, ImageBackground, StatusBar} from 'react-native'
 import { Actions } from 'react-native-router-flux'
+import styles from './styles'
+
 
 class SplashPage extends Component{
     
@@ -10,7 +12,7 @@ class SplashPage extends Component{
             <View style={styles.container} >
                 <StatusBar backgroundColor='transparent' barStyle='dark-content' />
 
-                <ImageBackground  source={require('../data/images/food_bg.webp')} style={styles.backgroundImage} >
+                <ImageBackground  source={require('../../data/images/food_bg.webp')} style={styles.backgroundImage} >
 
                     <View style={{alignItems:'center', marginTop:140 }}>
 
@@ -36,25 +38,5 @@ function timeOutSplash(){
     }, 3000)
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
 
-    textStyle: {
-        fontSize:40,
-        // fontFamily:'Ubuntu-Bold',
-        color:'#FFFFFF',
-        fontWeight:'bold'
-    },
-
-    backgroundImage: {
-        resizeMode:'stretch',
-        height:'100%',
-        width:'100%',
-    }
-  });
   

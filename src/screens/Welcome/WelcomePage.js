@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet, ImageBackground, Button, TouchableOpacity, Image} from 'react-native'
 import RNPickerSelect from 'react-native-picker-select'
-import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux'
+import styles from './styles'
 
 class WelcomePage extends Component{
     render(){
         return(
             <View style={styles.container}>
                 <ImageBackground  
-                    source={require('../data/images/food_bg.webp')} 
+                    source={require('../../data/images/food_bg.webp')} 
                     blurRadius={10}
                     style={styles.backgroundImage} >
 
@@ -19,7 +20,7 @@ class WelcomePage extends Component{
                             <View style={{height:50, width:50, marginTop:'1%'}}>
                                 <Image 
                                     style={{height:35, width:35, marginTop:'15%', marginStart:'15%', tintColor:'#fff'}}
-                                    source={require('../data/images/owl.png')}/> 
+                                    source={require('../../data/images/owl.png')}/> 
                             </View>
 
                             <View
@@ -107,7 +108,10 @@ class WelcomePage extends Component{
                                     <TouchableOpacity
                                         activeOpacity={0.5}
                                         style={{flex:1, flexDirection:'row', justifyContent:'center', bottom:'3%'}}
-                                        onPress={() => {  }}>
+                                        onPress={() => { 
+                                            console.log("Login Button Clicked")
+                                            Actions.move_to_login_page()
+                                         }}>
                                             <Text style={styles.selectedTextStyle}>Continue</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -124,76 +128,3 @@ class WelcomePage extends Component{
 
 export default  WelcomePage
  
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-
-    selectedButtonStyle:{
-        alignItems:'center',
-        flex: 1, 
-        backgroundColor: '#2E77B5', 
-        borderRadius:5,
-    },
-    
-    loginButtonStyle:{
-        alignItems:'center',
-        justifyContent:'center',
-        flex: 1, 
-        backgroundColor: '#00000000', 
-        borderRadius:5,
-        borderColor:'#FFF',
-        borderWidth:1
-    },
-
-    unSelectedButtonStyle:{
-        alignItems:'center',
-        flex: 1, 
-        backgroundColor: '#FFFFFF', 
-        borderRadius:0,
-    },
-
-    selectedTextStyle:{
-        marginTop:'8%',
-        fontSize:15,
-        color:'#fff',
-        fontWeight:'bold'
-    },
-    
-    unSelectedTextStyle:{
-        marginTop:'8%',
-        fontSize:15,
-        color:'#555',
-        justifyContent:'center',
-        fontWeight:'bold'
-    },
-
-    textHeaderStyle: {
-        fontSize:40,
-        color:'#fff',
-        fontWeight:'200'
-    },
-
-    buttonsPlacementStyle: {
-        flex:1,
-        margin:6,
-        bottom:'4%'
-    },
-
-    textDescStyle: {
-        fontSize:20,
-        color:'#fff',
-        fontWeight:'200'
-    },
-
-    backgroundImage: {
-        resizeMode:'center',
-        height:'100%',
-        width:'100%',
-    }
-
-  });
-  

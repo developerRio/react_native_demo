@@ -7,9 +7,10 @@ import * as Font from 'expo-font';
  * components fro router
  */
 
- import SplashScreen from './src/screens/SplashScreen'
- import WelcomePage from './src/screens/WelcomePage'
- import LoginPage from './src/screens/LoginPage'
+ import SplashScreen from './src/screens/Splash/SplashScreen'
+ import WelcomePage from './src/screens/Welcome/WelcomePage'
+ import LoginPage from './src/screens/Login/LoginPage'
+ import AllergensCatalogue from './src/screens/AllergensCatalogue/AllergensCatalogue'
  import { render } from 'react-dom'
 
 //  Font.loadAsync({
@@ -34,6 +35,7 @@ class App extends Component{
           <Scene key="key_loading" component={SplashScreen} initial={true} hideNavBar={true}/>
           <Scene key="key_login" component={WelcomePage} hideNavBar={true}/>
           <Scene key="move_to_login_page" component={LoginPage} hideNavBar={true}/>
+          <Scene key="move_to_AllergensCatalogue" component={AllergensCatalogue} hideNavBar={true}/>
        </Scene>
       </Router>
     )
