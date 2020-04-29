@@ -9,7 +9,7 @@ import styles from './styles'
 class AllergensCatalogue extends Component{
 
     constructor(props) {
-        super(props);
+        super(props)
     
         this.state = {
           GridListItems: [
@@ -34,13 +34,13 @@ class AllergensCatalogue extends Component{
       GetGridViewItem(item) {
         Alert.alert(item)
       }
-    
 
     render(){
+
         return(
             <View style={styles.parentContainer}>
                 {/* tootlbar */}
-                        <View style={styles.toolbarContainerViewStyle}>
+                <View style={styles.toolbarContainerViewStyle}>
                             <View style={styles.rowContainer}>
                                 <View style={styles.rowItem}>
                                     <Image 
@@ -76,16 +76,21 @@ class AllergensCatalogue extends Component{
 
                     <View style={{ flex:1}}>
                         {/* Grid view */}
+                        
                         <View style={styles.container}>
                             <FlatList
                                 style={{ margin:'3%'}}
                                 data={ this.state.GridListItems }
                                 renderItem={ ({item}) =>
-                                <View style={styles.GridViewContainer} >
-                                    <Text style={styles.GridViewTextLayout} onPress={this.GetGridViewItem.bind(this, item.key)} > 
+                                
+                                <TouchableOpacity 
+                                    activeOpacity={0.5} 
+                                    style={styles.GridViewContainer}>
+
+                                    <Text style={styles.GridViewTextLayout} onPress={this.GetGridViewItem.bind(this, item.key) } > 
                                         {item.key} 
                                     </Text>
-                                </View> }
+                                </TouchableOpacity> }
                                 numColumns={3}
                             />
                        

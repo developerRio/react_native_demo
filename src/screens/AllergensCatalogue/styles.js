@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 
       GridViewContainerSelected: {
         flex:1,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         height: 150,
         margin: 5,
