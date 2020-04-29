@@ -140,7 +140,7 @@ class LoginPage extends Component{
                                   onPress={() => { 
 
                                     // perform  register
-                                    console.log("REgister Button Clicked")
+                                    console.log("Register Button Clicked")
                                     Actions.move_to_AllergensCatalogue()
 
                                   }}>
