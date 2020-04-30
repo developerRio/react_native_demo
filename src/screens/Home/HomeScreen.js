@@ -1,14 +1,39 @@
 import React, { Component } from 'react'
-import {StyleSheet, View, Text, Platform,  Alert, FlatList, StatusBar, TouchableOpacity, Image} from 'react-native'
+import {StyleSheet, View, Text, Platform,  Alert, FlatList, Dimensions, TouchableOpacity, Image} from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import styles from './styles'
+import { TabView, SceneMap, TabViewAnimated, TabViewPage, TabBarTop } from 'react-native-tab-view'
 
+
+ 
 class HomeScreen extends Component{
+    
+    state = {
+        index: 0,
+        routes: [
+          { key: '1', title: 'First' },
+          { key: '2', title: 'Second' },
+        ],
+      }
+    
+      _renderScene = ({ route }) => {
+        switch (route.key) {
+        case '1':
+          return <View style={{ flex: 1, backgroundColor: '#ff4081' }} />;
+        case '2':
+          return <View style={{ flex: 1, backgroundColor: '#673ab7' }} />;
+        default:
+          return null;
+        }
+      }
+    
+      _renderPage = (props) => <TabViewPage {...props} renderScene={this._renderScene} />;
 
     render(){
-
+         
         return(
+            
             <View style={styles.parentContainer}>
 
                 {/* tootlbar */}
@@ -41,10 +66,16 @@ class HomeScreen extends Component{
                         </View>
                      
                 {/* main content containers */}
-                <View style={{ height:'10%', width:'100%', backgroundColor: '#eee', alignSelf:'baseline' }}>
-
-                    
-
+                <View style={{flex:1, width:'100%', backgroundColor: '#eee', alignSelf:'baseline' }}>
+                                
+                <TabViewAnimated
+                    style={{ flex: 1 }}
+                    navigationState={this.state.navigation}
+                    renderScene={this._renderPage}
+                    renderHeader={this._renderHeader}
+                    onRequestChangeTab={index => this.setState({ index })}
+                />
+                 
                 </View>
 
 
@@ -53,6 +84,9 @@ class HomeScreen extends Component{
     }
 
 }
+
+ 
+  
 
 export default HomeScreen
 
