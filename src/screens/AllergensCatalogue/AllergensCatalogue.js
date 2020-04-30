@@ -103,6 +103,7 @@ class AllergensCatalogue extends Component{
                                 onPress={() => { 
                                     // perform  register
                                     console.log("Apply Button Clicked")
+                                    Actions.move_to_Home()
                                 }}>
                                     <View style={{ flex: 1, flexDirection:'row', justifyContent:'center', }}>
                                     <Text style={{color:'#fff', fontWeight:'bold', alignSelf:'center',}}>Apply</Text>
