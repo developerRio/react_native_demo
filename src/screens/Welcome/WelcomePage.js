@@ -5,6 +5,14 @@ import { Actions } from 'react-native-router-flux'
 import styles from './styles'
 
 class WelcomePage extends Component{
+
+    constructor(props){
+        super(props)
+        this.state = {
+          pressed : 1
+        }
+      }
+
     render(){
         return(
             <View style={styles.container}>
@@ -70,18 +78,22 @@ class WelcomePage extends Component{
                                     <View style={{ flex: 1 }}>
                                         <View style={{ flex: 1, flexDirection:'row' }}>
                                             <TouchableOpacity
-                                            activeOpacity={0.8}
-                                            style={styles.selectedButtonStyle}
-                                            onPress={() => {  }}>
-                                                <Text style={styles.selectedTextStyle}>On the spot</Text>
-                                            </TouchableOpacity>
+                                                activeOpacity={0.8}
+                                                style={(this.state.pressed == 1)?styles.selectedButtonStyle:styles.unSelectedButtonStyle}
+                                                onPress={() => { 
+                                                    this.setState({pressed : 1})
+                                                }}>
+                                                    <Text style={(this.state.pressed == 1)?styles.selectedTextStyle:styles.unSelectedTextStyle}>On the spot</Text>
+                                                </TouchableOpacity>
 
-                                            <TouchableOpacity
-                                            activeOpacity={0.8}
-                                            style={styles.unSelectedButtonStyle}
-                                            onPress={() => {  }}>
-                                            <Text style={styles.unSelectedTextStyle}>Takeaway</Text>
-                                        </TouchableOpacity>
+                                                <TouchableOpacity
+                                                activeOpacity={0.8}
+                                                style={(this.state.pressed == 1)?styles.unSelectedButtonStyle:styles.selectedButtonStyle}
+                                                onPress={() => { 
+                                                    this.setState({pressed : 0})
+                                                }}>
+                                                    <Text style={(this.state.pressed == 1)?styles.unSelectedTextStyle:styles.selectedTextStyle}>Takeaway</Text>
+                                            </TouchableOpacity>
                                         </View>
                                         
                                     </View>

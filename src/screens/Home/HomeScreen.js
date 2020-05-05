@@ -3,37 +3,19 @@ import {StyleSheet, View, Text, Platform,  Alert, FlatList, Dimensions, Touchabl
 import { Actions } from 'react-native-router-flux'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import styles from './styles'
-import { TabView, SceneMap, TabViewAnimated, TabViewPage, TabBarTop } from 'react-native-tab-view'
+import { ScrollableTabBar} from 'react-native-scrollable-tab-view'
+var ScrollableTabView = require('react-native-scrollable-tab-view')
 
+// Tab Imports
+import PizzasPage from '../Home/TabPages/Pizzas'
+import BurgersPage from '../Home/TabPages/Burgers' 
+import SaladsPage from '../Home/TabPages/Salads'
 
  
-class HomeScreen extends Component{
-    
-    state = {
-        index: 0,
-        routes: [
-          { key: '1', title: 'First' },
-          { key: '2', title: 'Second' },
-        ],
-      }
-    
-      _renderScene = ({ route }) => {
-        switch (route.key) {
-        case '1':
-          return <View style={{ flex: 1, backgroundColor: '#ff4081' }} />;
-        case '2':
-          return <View style={{ flex: 1, backgroundColor: '#673ab7' }} />;
-        default:
-          return null;
-        }
-      }
-    
-      _renderPage = (props) => <TabViewPage {...props} renderScene={this._renderScene} />;
+export default class HomeScreen extends Component{
 
-    render(){
-         
-        return(
-            
+  render(){
+    return(     
             <View style={styles.parentContainer}>
 
                 {/* tootlbar */}
@@ -67,26 +49,44 @@ class HomeScreen extends Component{
                      
                 {/* main content containers */}
                 <View style={{flex:1, width:'100%', backgroundColor: '#eee', alignSelf:'baseline' }}>
-                                
-                <TabViewAnimated
-                    style={{ flex: 1 }}
-                    navigationState={this.state.navigation}
-                    renderScene={this._renderPage}
-                    renderHeader={this._renderHeader}
-                    onRequestChangeTab={index => this.setState({ index })}
-                />
-                 
-                </View>
 
+                  <ScrollableTabView
+
+                    renderTabBar={() => (
+                      <ScrollableTabBar
+                        style={styles.scrollStyle}
+                      />
+                    )}
+                    tabBarTextStyle={styles.tabBarTextStyle}
+                    tabBarInactiveTextColor={'#333333'}
+                    tabBarActiveTextColor={'#2E77B5'}
+                    tabBarUnderlineStyle={styles.underlineStyle}
+                    initialPage={0}>
+
+                    <View key={'1'} tabLabel={'Pizzas'} style={{flex:1, backgroundColor:'#ffd58c'}}>
+                        <PizzasPage>
+                          
+                        </PizzasPage>
+                    </View>
+                    <View key={'2'} tabLabel={'Burgers'} style={{flex:1, backgroundColor:'#b8ffbd'}}>
+                        <BurgersPage>
+
+                        </BurgersPage>
+                    </View>
+                    <View key={'3'} tabLabel={'Salads'} style={{flex:1, backgroundColor:'#b8e3ff'}}>
+                        <SaladsPage>
+
+                        </SaladsPage>
+                    </View>
+                    <View key={'4'} tabLabel={'Soups'} style={{flex:1, backgroundColor:'#aaa'}}></View>
+                    <View key={'5'} tabLabel={'Dumplings'} style={{flex:1, backgroundColor:'#ccc'}}></View>
+
+                  </ScrollableTabView>    
+                
+                </View>
 
             </View>
         )
     }
 
 }
-
- 
-  
-
-export default HomeScreen
-

@@ -2,33 +2,10 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   
-  scrollStyle: {
-    backgroundColor: '#fcfcfc',
-    paddingLeft: '3%',
-    elevation:3,
-    paddingRight: '3%',
-    // justifyContent: 'center',
-  },
-
-  tabBarTextStyle: {
-    fontSize: 16,
-    fontWeight: "600",
-  },
-
-  underlineStyle: {
-    flex:1,
-    height: 3,
-    justifyContent:'center',
-    backgroundColor: '#2E77B5',
-    borderRadius: 5,
-    width: '18%',
-  },
-
-  parentContainer: {
+parentContainer: {
     width: '100%',
     height:'100%',
     flex: 1,
-    backgroundColor: '#fff',
   },
   
 textHeaderStyle: {

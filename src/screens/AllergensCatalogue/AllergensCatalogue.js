@@ -10,6 +10,9 @@ class AllergensCatalogue extends Component{
 
     constructor(props) {
         super(props)
+        this.state = {
+            pressed : 1
+          }
     
         this.state = {
           GridListItems: [
@@ -84,10 +87,13 @@ class AllergensCatalogue extends Component{
                                 renderItem={ ({item}) =>
                                 
                                 <TouchableOpacity 
-                                    activeOpacity={0.5} 
-                                    style={styles.GridViewContainer}>
+                                    activeOpacity={0.5}
+                                    style={(this.state.pressed == 0)?styles.GridViewContainerSelected:styles.GridViewContainer}
+                                     >
 
-                                    <Text style={styles.GridViewTextLayout} onPress={this.GetGridViewItem.bind(this, item.key) } > 
+                                    <Text style={styles.GridViewTextLayout} 
+                                        onPress={
+                                            this.GetGridViewItem.bind(this, item.key) } > 
                                         {item.key} 
                                     </Text>
                                 </TouchableOpacity> }

@@ -4,7 +4,7 @@ import {Router, Scene} from 'react-native-router-flux';
 import * as Font from 'expo-font';
 
 /**
- * components fro router
+ * components for router
  */
 
  import SplashScreen from './src/screens/Splash/SplashScreen'
