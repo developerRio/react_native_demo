@@ -7,10 +7,7 @@ import { FlatList, TouchableHighlight, TouchableOpacity } from 'react-native-ges
 
 export default class PizzaPage extends Component{
 
-
-  //  <Text style={styles.title}>{item.title}</Text>
-  // <Text style={styles.category}>{getCategoryName(item.categoryId)}</Text>
-
+ 
 
     renderRecipes = ({ item }) => (
       <TouchableHighlight 
