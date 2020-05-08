@@ -25,16 +25,6 @@ textHeaderStyle: {
   fontWeight:'bold'
 },
 
-textDescStyle: {
-  fontSize:16, 
-  color:'#202020', 
-  marginStart:'3%', 
-  marginEnd:'3%',
-  marginTop:'2%', 
-  marginBottom:'3%', 
-  fontWeight:'500'
-},
-
 backgroundImage: {
     resizeMode:'center',
     height:'100%',
@@ -102,42 +92,70 @@ toolbarContainerViewStyle:{
     width:'100%',  
   },
 
-  container: {
+  cardContainer: {
     flex: 1,
+    flexDirection:'row',
     alignItems: 'center',
     alignSelf:'auto',
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 20,
-    width: '90%',  // (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums
-    height: RECIPE_ITEM_HEIGHT + 75,
-    borderColor: '#eee',
-    backgroundColor:'#fff',
-    borderWidth: 0.5,
-    borderRadius: 15
+    margin: 5,
+    width: 'auto',  // (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums
+    height: 130,
   },
 
   photo: {
-    width: '100%',  // (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums
-    height: RECIPE_ITEM_HEIGHT,
+    flex:1.2,
+    width: '20%',  // (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums
+    height: '80%',
     borderRadius: 15,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0
+    margin:5,
   },
-  title: {
+
+  SecondContainer: {
+    flex: 2,
+    width: '10%', 
+    height: '80%',
+    margin:5,
+    flexDirection:'column',
+  },
+
+  thirdContainer: {
     flex: 1,
-    fontSize: 17,
+    alignItems:'flex-end',
+    width: '10%', 
+    height: '80%',
+    margin:5,
+    flexDirection:'column',
+  },
+
+  titleCard:{
+    fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
     color: '#444444',
     marginTop: 3,
     marginRight: 5,
     marginLeft: 5,
   },
-  category: {
-    marginTop: 5,
-    marginBottom: 5
-  }
+
+  decsCard:{
+    fontSize: 18,
+    fontWeight: '400',
+    textAlign: 'left',
+    color: '#aaa',
+    marginTop: 3,
+    marginRight: 5,
+    marginLeft: 5,
+  },
+
+  priceTag:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    color: '#2E77B5',
+    marginTop: 3,
+    marginRight: 5,
+    marginLeft: 5,
+  },
 
 })
 

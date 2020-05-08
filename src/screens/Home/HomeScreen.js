@@ -63,7 +63,7 @@ export default class HomeScreen extends Component{
                     tabBarUnderlineStyle={styles.underlineStyle}
                     initialPage={0}>
 
-                    <View key={'1'} tabLabel={'Pizzas'} style={{flex:1, backgroundColor:'#ffd58c'}}>
+                    <View key={'1'} tabLabel={'Pizzas'} style={{flex:1, backgroundColor:'#fff'}}>
                         <PizzasPage>
                           
                         </PizzasPage>
