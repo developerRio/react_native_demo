@@ -5,6 +5,69 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import styles from './styles'
 
 class LoginPage extends Component{
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      baseURL : "http://reqres.in/api",
+      email : '',
+      password: '',
+      phoneNumber: '',     
+      wholeResult: '',      
+    }
+  }
+
+    onClickListener = (viewId) => {
+          if(this.state.phoneNumber || this.state.phoneNumber != " "){
+          if(this.state.email){
+            if(this.state.password){
+                this.registerCall();
+            }else{
+            alert("Please enter password");
+            }
+          }else{
+          alert("Please enter email");
+          }
+        }else{
+          alert("Please enter phone Number");
+        }   
+
+      }
+
+      registerCall(){
+        var that = this;
+        var url = that.state.baseURL + '/login'
+        console.log("url_login : " + url)
+      
+        fetch(url,{
+              method: 'POST',
+              headers : {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: JSON.stringify({email: 'eve.holt@reqres.in', password: 'cityslicka'}) // statically added for testing 
+              //body: JSON.stringify({"phone": this.state.phoneNumber, "email": this.state.email,"password": this.state.password})
+
+              }).then(function (response) {
+                return response.json()
+              }).then(function (result) { 
+
+              console.log("Login_API resposne = " + result)
+
+
+              if(!result.error){
+                // sucess 
+                Actions.move_to_AllergensCatalogue() // sending user to next page
+                
+                that.setState({ status: result.error, wholeResult: result, })
+              }else{
+              alert(result.error_msg)
+        }
+      }).catch(function (error) {
+        console.log("registerCall error occured "+error)
+        alert("result:" + error)
+      })
+     }
+
     render(){
         return(
             <View style={styles.parentContainer}> 
@@ -87,6 +150,7 @@ class LoginPage extends Component{
                             <TextInput
                               returnKeyType={'next'}
                               keyboardType={'email-address'}
+                              onChangeText={(email) => this.setState({email})}
                               underlineColorAndroid={'rgba(0,0,0,0)'}> </TextInput>
 
                           </View> 
@@ -100,6 +164,7 @@ class LoginPage extends Component{
                             <TextInput
                               returnKeyType={'next'}
                               keyboardType={'phone-pad'}
+                              onChangeText={(phoneNumber) => this.setState({phoneNumber})}
                               underlineColorAndroid={'rgba(0,0,0,0)'}> </TextInput>
 
                           </View> 
@@ -112,6 +177,7 @@ class LoginPage extends Component{
 
                             <TextInput
                               secureTextEntry={true}
+                              onChangeText={(password) => this.setState({password})}
                               underlineColorAndroid={'rgba(0,0,0,0)'}> </TextInput>
 
                           </View> 
@@ -124,7 +190,10 @@ class LoginPage extends Component{
                               onPress={() => { 
                                 // perform  register
                                 console.log("Register Button Clicked")
-                                Actions.move_to_AllergensCatalogue()
+
+                                this.onClickListener('sign_up')
+
+      
                               }}>
                                 <View style={{ flex: 1, flexDirection:'row', justifyContent:'center', }}>
                                   <Text style={{color:'#fff', fontWeight:'bold', alignSelf:'center',}}>Register</Text>
@@ -158,7 +227,7 @@ class LoginPage extends Component{
             </View>
         )
     }
-}
+  }
 
-export default LoginPage
 
+  export default LoginPage
